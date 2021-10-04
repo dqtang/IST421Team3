@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Log In Page</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="6324381213-tn0ffjmb6r1s6ufa514ue4ql7tdr3o0k">
+
+</head>
+<body>
+	<form>
+		<label for="username">Username: </label><br>
+		<input type ="text" id="username" name="username"><br>
+	  <label for="pwd">Password:</label><br>
+  		<input type="password" id="pwd" name="pwd"><br><br>
+		<input type="submit" value="Submit">
+	</form>
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+	<script> function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}</script>
+</body>
+</html>
