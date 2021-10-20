@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 14, 2021 at 01:22 AM
+-- Host: 127.0.0.1
+-- Generation Time: Oct 21, 2021 at 01:05 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `credentials` (
-  `Usernmae` varchar(20) NOT NULL,
+  `Username` varchar(20) NOT NULL,
   `Password` varchar(10) NOT NULL,
   `Profile ID` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -36,10 +36,10 @@ CREATE TABLE `credentials` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Friends List`
+-- Table structure for table `friends_list`
 --
 
-CREATE TABLE `Friends List` (
+CREATE TABLE `friends_list` (
   `Profile ID` int(50) NOT NULL,
   `URL` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -47,10 +47,10 @@ CREATE TABLE `Friends List` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Post Information`
+-- Table structure for table `post_information`
 --
 
-CREATE TABLE `Post Information` (
+CREATE TABLE `post_information` (
   `Picture` varbinary(10000) NOT NULL,
   `Comments` varchar(500) NOT NULL,
   `Likes` int(225) NOT NULL,
@@ -60,15 +60,16 @@ CREATE TABLE `Post Information` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Profile Information`
+-- Table structure for table `profile_information`
 --
 
-CREATE TABLE `Profile Information` (
-  `Frist Name` varchar(50) NOT NULL,
+CREATE TABLE `profile_information` (
+  `First Name` varchar(50) NOT NULL,
   `Last Name` varchar(50) NOT NULL,
   `Phone Number` varchar(15) NOT NULL,
   `DOB` date NOT NULL,
-  `Profile ID` int(15) NOT NULL
+  `Profile_ID` int(15) NOT NULL,
+  `Profile_URL` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,38 +83,38 @@ ALTER TABLE `credentials`
   ADD UNIQUE KEY `Profile ID` (`Profile ID`);
 
 --
--- Indexes for table `Friends List`
+-- Indexes for table `friends_list`
 --
-ALTER TABLE `Friends List`
+ALTER TABLE `friends_list`
   ADD UNIQUE KEY `Profile ID` (`Profile ID`);
 
 --
--- Indexes for table `Post Information`
+-- Indexes for table `post_information`
 --
-ALTER TABLE `Post Information`
+ALTER TABLE `post_information`
   ADD PRIMARY KEY (`Post Id`);
 
 --
--- Indexes for table `Profile Information`
+-- Indexes for table `profile_information`
 --
-ALTER TABLE `Profile Information`
-  ADD PRIMARY KEY (`Profile ID`);
+ALTER TABLE `profile_information`
+  ADD PRIMARY KEY (`Profile_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `Post Information`
+-- AUTO_INCREMENT for table `post_information`
 --
-ALTER TABLE `Post Information`
+ALTER TABLE `post_information`
   MODIFY `Post Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Profile Information`
+-- AUTO_INCREMENT for table `profile_information`
 --
-ALTER TABLE `Profile Information`
-  MODIFY `Profile ID` int(15) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `profile_information`
+  MODIFY `Profile_ID` int(15) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
