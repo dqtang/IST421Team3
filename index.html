@@ -20,6 +20,8 @@
 <meta charset="utf-8">
 <title>Log In Page</title>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <h1>Flex Media</h1>
 <body>
 	<b1>
@@ -87,25 +89,52 @@
 					  
 					 console.log(responsePayload);
 				  
+						
+
+				
+					gID = responsePayload.sub;
+					
+					//JQuery Post to PHP file
+					$.post("http://localhost/CheckAccount.php",{
+						gID: "gID"
+					},
+					function(data,status){
+						alert("Data: "+ data +"\nStatus: "+status);
+					}
+					
+					)
+
+					 
 				  }
 				
 			</script>
 		</div>
 		
 		<div>
-			<button>Don't have an account? Sign Up Here!</button>
+			<button onclick="location.href='http://localhost/IST 420/SignUp.html'";>Don't have an account? Sign Up Here!</button>
 		</div>
 
 
 		<script>
+			/*
 			//AJAX Code Connect to MySQL DB
-
-
 			//AJAX CODE Check If User is new redirect Sign Up Page
 
-			//Send JWT Token to Sign Up Page -> Send info to DB
+			
 
 
+			function checkUser(str){
+				const xmlhttp = new XMLHttpRequest();
+				
+				gID = responsePayload.sub;
+				
+				
+				xmlhttp.open("GET", "CheckAccount.php?gID="+gID);
+				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xmlhttp.send();
+			}
+
+*/
 			</script>
 	</b1>
 </body>

@@ -1,5 +1,5 @@
 <?php 
-function CheckUser(){
+
     include 'DBConnect.php';
 
     $credentials = DBCredential();
@@ -9,32 +9,30 @@ function CheckUser(){
     $conn = new mysqli($servername, $username, $password, $dbname);
 
 
-    $googleID = $_POST['gID'];
+    $gID = $_POST["gID"];
 
 
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
       }else{
-            $sql = "SELECT Profile_ID from profile_information where Profile_ID='$googleID'";
+            $sql = "SELECT Profile_ID from profile_information where Profile_ID='$gID'";
 
             $queryResult = $conn->query($sql);
 
-            if ($queryResult > 0){
+            if ($queryResult->num_rows > 0){
+                  while($row = $queryResult->fetch_assoc()){
+                        $profileID=$row["Profile_ID"];
+                        echo"ID: ". $row["Profile_ID"];
 
-
-
-            }else{
-
+                  }
+                  }else{
+                        echo "0 Results";
             }
-
-
-
 
 
       }
 
-}
 
 
 
