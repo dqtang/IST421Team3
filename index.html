@@ -93,10 +93,19 @@
 
 				
 					gID = responsePayload.sub;
+					firstName = responsePayload.given_name;
+					lastName = responsePayload.family_name;
+					profileImageUrl = responsePayload.picture;
+					email = responsePayload.email;
+
 					
 					//JQuery Post to PHP file
 					$.post("http://localhost/CheckAccount.php",{
-						gID: "gID"
+						gID: gID,
+						firstName: firstName,
+						lastName: lastName,
+						profileImageUrl: profileImageUrl,
+						email: email
 					},
 					function(data,status){
 						alert("Data: "+ data +"\nStatus: "+status);
