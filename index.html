@@ -85,65 +85,34 @@
 					 console.log('Family Name: ' + responsePayload.family_name);
 					 console.log("Image URL: " + responsePayload.picture);
 					 console.log("Email: " + responsePayload.email);
-					  
-					 console.log(responsePayload);
-				  
 						
 
-				
 					gID = responsePayload.sub;
 					firstName = responsePayload.given_name;
 					lastName = responsePayload.family_name;
 					profileImageUrl = responsePayload.picture;
 					email = responsePayload.email;
 
-					
-					//JQuery Post to PHP file
-					$.post("http://localhost/CheckAccount.php",{
-						gID: gID,
-						firstName: firstName,
-						lastName: lastName,
-						profileImageUrl: profileImageUrl,
-						email: email
-					},
-					function(data,status){
-						alert("Data: "+ data +"\nStatus: "+status);
-					}
-					
-					)
-
-					 
+					//Ajax send POST to gVerify.php
+					//gVerify.php verifies google payload
+					//Redirect Users to Homepage or newUserPage as needed.
+					$.ajax({
+						type: 'POST', 
+						url: 'http://localhost/gVerify.php',
+						data: {'id_token' : response.credential},
+						success: function(data){
+							if(data && data.match())
+								location.href = data+"?id_token="+response.credential;
+						}
+					})
 				  }
 				
 			</script>
 		</div>
 		
 		<div>
-			<button onclick="location.href='http://localhost/IST 420/SignUp.html'";>Don't have an account? Sign Up Here!</button>
+			<button onclick="location.href='http://localhost/IST 421/SignUp.html'";>Don't have an account? Sign Up Here!</button>
 		</div>
-
-
-		<script>
-			/*
-			//AJAX Code Connect to MySQL DB
-			//AJAX CODE Check If User is new redirect Sign Up Page
-
-			
-
-
-			function checkUser(str){
-				const xmlhttp = new XMLHttpRequest();
-				
-				gID = responsePayload.sub;
-				
-				
-				xmlhttp.open("GET", "CheckAccount.php?gID="+gID);
-				xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xmlhttp.send();
-			}
-
-*/
-			</script>
 	</b1>
 </body>
 </html>
