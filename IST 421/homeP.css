@@ -21,17 +21,26 @@ margin-left: 40%;
 margin-left: 250px
 }
 .container2 img{
-margin-left: 580px;
 border-radius: 30px;
 }
+
 .container2 input{
 padding: 6px;
 border: none;
 border-radius: 30px;
 font-size: 19px;
 margin-top: 8px;
-margin-left: 45%;
+
+
 }
+.center{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+
 .container2{
 padding: 10px;
 background-color: #D6C7F5;
@@ -39,30 +48,32 @@ max-width: 100%;
 max-height: 100%;
 }
 
-.container2 figcaption{
+.container2 a{
 padding-left: 10px;
-margin-left: 45%;
-background-color:orange;
-width: 200px;
+font-size: X-large;
+
 border-radius: 37px;
 
 }
 
 .container3 figcaption{
 margin-left: 40%;
-max-width:130px;
+max-width:180px;
 border-radius: 00px;
 font-size: 30px
 }
 
 .container3{
 margin-top: -1000px;
-margin-left: 1000px;
-border-radius: 00px;
+margin-left: 1500px;
+border-radius: 20px;
 border-style: solid;
 
 }
 
+.space{
+	margin-top: 50px;
+}
 
 .list {
 list-style-type: none;
