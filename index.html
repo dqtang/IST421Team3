@@ -102,6 +102,7 @@
 						data: {'id_token' : response.credential},
 						success: function(data){
 							if(data && data.match())
+
 								location.href = data+"?id_token="+response.credential;
 						}
 					})
