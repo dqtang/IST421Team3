@@ -7,10 +7,16 @@ max-width: 100%;
 height: 50px;
 }
 
+
 .Con1 a{
-	font:italic;
-	font-size: 40px;	
+margin-left: 70px;
+font-family: 'Anton', sans-serif;	
+font-size: x-large;
+
+margin-right: 330px;
+margin-left: 120px;
 }
+
 
 .Con2{
 	background-color: #D6C7F5;
@@ -18,10 +24,7 @@ height: 50px;
 	max-width: 100%;
 }
 
-.Con2 img{
-margin-top: 100px;
-		
-}
+
 
 .center {
 	display: block;
@@ -36,7 +39,7 @@ margin-top: 100px;
 }
 
 .con3{
-	padding-top: 1000px;
+	padding-top: 900px;
 	background-color: #D6C7F5;
 	
 }

@@ -14,7 +14,11 @@
 	
 <div class="Con2" width="250" height="250" ><img src="plus.PNG" width="416" height="416" alt="" class = "Center"/>
 	<input type ="text" placeholder="Caption">
-	
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+		Select image to upload:
+		<input type="file" name="filename" id="fileToUpload">
+		<input type="submit" value="Upload Image" name="submit">
+	  </form>
 	<a href="Homepage.html"><button type="Button"> ADD POST</button></a>
 	</div>
 
