@@ -25,19 +25,12 @@
                 }                   
                 echo json_encode($friendArray);
 
-
             }
-
-
 
                 }else{
                   echo "Failed Query";
                   exit();
                 }
-
-
-
-
       }
 
 
