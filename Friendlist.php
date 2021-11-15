@@ -5,7 +5,7 @@
       $credentials = DBCredential();
       extract($credentials);
 
-      //$gID = $_POST["gID"];
+      $gID = $_POST["gID"];
 
 
       $conn = new mysqli($servername, $username, $password, $dbname);
