@@ -33,9 +33,14 @@
 	<header>
 	<div class= "container1"><a  href="Homepage.html" >Flex Media</a>
 <input type ="text" placeholder="search" >
-<a href="../upload.php"><img src="AddaPost.PNG" width="38" height="31" alt=""/></a>
+<a><img src="AddaPost.PNG" id ="profile_page" width="38" height="31" alt=""/></a>
 <script>
+document.getElementById("profile_page").onclick = function() {profilePageRedirect()};
 
+function profilePageRedirect(){
+	document.getElementById("profile_page").location.href = "http://localhost/upload.php"+"?id_token="+id_token;
+
+}
 
 
 </script>

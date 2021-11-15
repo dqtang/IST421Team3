@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </div>
 	</header>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <body>
 <div id="content"  class="Con2" >
 <img src="Home page/plus.PNG" width="416" height="416" alt="" class = "center"/>
@@ -39,15 +40,18 @@
 							return JSON.parse(jsonPayload);
 						};
 		const responsePayload = decodeJwtResponse(id_token);
-		firstName = responsePayload.given_name;
-		lastName = responsePayload.family_name;
-		profileImageUrl = responsePayload.picture;
-		email = responsePayload.email;
 		gID = responsePayload.sub;
 
 
-	</script>
-</html>
+    $.ajax({
+						type: 'POST', 
+						url: 'http://localhost/upload.php',
+						data: {'gID' : gID},
+						success: function(data){
+              alert(data);
+						}
+					})
+</script>
 
 <?php
 error_reporting(0);
@@ -61,7 +65,9 @@ error_reporting(0);
   extract($credentials);
 
   $msg = "";
-  
+  $gID = $_POST["gID"];
+
+
   // If upload button is clicked ...
   if (isset($_POST['upload'])) {
   
@@ -72,7 +78,7 @@ error_reporting(0);
         $conn = new mysqli($servername, $username, $password, $dbname);
   
         // Get all the submitted data from the form
-        $sql = "INSERT INTO post_information (Picture) VALUES ('$filename')";
+        $sql = "INSERT INTO post_information (Picture, Profile_ID) VALUES ('$filename', '$gID')";
   
         // Execute query
         mysqli_query($conn, $sql);
@@ -86,3 +92,4 @@ error_reporting(0);
   }
  $conn->close();
 ?>
+</html>
