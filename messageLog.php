@@ -15,10 +15,12 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }else{
+            //SQL query for messages
             $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = '1' AND ReceiverID = '2' INNER JOIN ";
             $SQL_Reciever = "SELECT * FROM `messaging` WHERE SenderID = '2' AND ReceiverID = '1'";
 
 
+            //put query results into arrays and echo in json to html
             $Message_Sender = $conn->query($SQL_Sender);
             if ($Message_Sender->num_rows>0){
                 while ($row = $Message_Sender->fetch_assoc()){
