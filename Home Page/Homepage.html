@@ -31,28 +31,31 @@
 			gID = responsePayload.sub;
 	</script>
 	<header>
-	<div class= "container1"><a  href="Homepage.html" >Flex Media</a>
+	<div class= "container1"><a  onclick="homePage()">Flex Media</a>
 <input type ="text" placeholder="search" >
 
 
 
-<a><img src="AddaPost.PNG" id ="profile_page" width="38" height="31" alt=""/></a>
-<script>
-document.getElementById("profile_page").onclick = function() {profilePageRedirect()};
-
-function profilePageRedirect(){
-	document.getElementById("profile_page").location.href = "http://localhost/upload.php"+"?id_token="+id_token;
-
-}
-
-
-</script>
-<a href="Homepage.html"><img src="Home ICon.PNG" width="38" height="31" alt=""/></a>
+<a><img src="AddaPost.PNG" class ="new_post" width="38" height="31" onclick="uploadPage()"/></a>
+<a ><img src="Home ICon.PNG" width="38" height="31" alt=""onclick="homePage()"/></a>
 <p style="width: 100px">&nbsp; </p>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </div>
+
+
+<script>
+function uploadPage() {
+    location.href = "http://localhost/upload.html?id_token="+id_token;
+}
+
+function homePage(){
+	location.href = "http://localhost/Home Page/Homepage.html?id_token="+id_token;
+}
+
+</script>
+
 		
 </header>
 

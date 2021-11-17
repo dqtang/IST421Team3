@@ -2,6 +2,8 @@
 <?php
 error_reporting(0);
 ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <?php
 
 
@@ -33,7 +35,7 @@ error_reporting(0);
         // Now let's move the uploaded image into the folder: image
         if (move_uploaded_file($tempname, $folder))  {
             $msg = "Image uploaded successfully";
-            echo $msg;
+            echo '<script>alert("Image Uploaded.")</script>';
             header("Location: http://localhost/upload.html?id_token=".$id_token);
 
         }else{

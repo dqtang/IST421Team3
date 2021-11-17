@@ -5,7 +5,13 @@
 <link rel="stylesheet" type= "text/css" href ="postpage.css"/>
 <header>
 
-<div class= "Con1"><a  href="Home Page/Homepage.html" >Flex Media</a>
+<div class= "Con1"><a  onclick="homePage()" >Flex Media</a>
+    
+    <script>
+    function homePage(){
+        location.href = "http://localhost/Home Page/Homepage.html?id_token="+id_token;
+    }
+</script>
 <a >New Post</a>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
