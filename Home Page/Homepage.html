@@ -101,12 +101,24 @@ function homePage(){
 <dt class="space"><a><img src="tech.PNG" width = "30px" height = "30px"/>Anzar_1</a></dt>
 <dt class="space"><a><img src="image.png" alt="poojan2211"/></a></dt>
 <dt class="space"><a><img src="image.png" alt="Chrisandy334"/></a></dt>
-<dt class="space"><a><img src="image.png" alt="RayMosam331"/></a></dt>
+<dt class="space" id="space"><a><img src="image.png" alt="RayMosam331"/></a></dt>
 
 
 </ul>
 </div>
+<script>
+	const xhttp = new XMLHttpRequest();
 
+
+	xhttp.open("POST", "http://localhost/Friendlist.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("gID="+gID);
+	xhttp.onload = function(){
+		document.getElementById("space").innerHTML = this.responseText;
+		
+	}
+
+</script>
 
 	
 </body>
