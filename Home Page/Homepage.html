@@ -61,7 +61,7 @@ function homePage(){
 </header>
 
 	
-<div class="profilePic" name = "profilePic"> <a> <img src="https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c" id = "profilePic" width = "30px" height="30px"/> </a>
+<div> <a> <img class= "profilePic" alt="image" src="tech.PNG" id = "profilePic" width = "30px" height="30px"/> </a>
 </div>
 
 <div class="container2" > <a> <img src="tech.PNG"  width = "30px" height="30px"/> DT200</a>
@@ -77,8 +77,7 @@ function homePage(){
 </div>
 <script>
 	//Change Profile Pic
-	var image = document.getElementsByClassName("profilePic");
-	image.src = profileImageUrl;
+	$(".profilePic").attr("src", profileImageUrl);
 </script>
 <div class = "center">
 <img src="tech.PNG" width="250" height="250" alt="" class="center"/>

@@ -35,7 +35,7 @@ error_reporting(0);
         // Now let's move the uploaded image into the folder: image
         if (move_uploaded_file($tempname, $folder))  {
             $msg = "Image uploaded successfully";
-            echo '<script>alert("Image Uploaded.")</script>';
+
             header("Location: http://localhost/upload.html?id_token=".$id_token);
 
         }else{
