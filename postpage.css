@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.Con1{
+background-color: #8AB998;
+max-width: 100%;
+height: 50px;
+}
+
+
+.Con1 a{
+margin-left: 70px;
+font-family: 'Anton', sans-serif;	
+font-size: x-large;
+
+margin-right: 330px;
+margin-left: 120px;
+}
+
+
+.Con2{
+	background-color: #D6C7F5;
+    max-height: 100%; 
+	max-width: 100%;
+}
+
+
+
+.center {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+.Con2 input{
+	display: block;
+	margin-right:auto;
+	margin-left: auto;
+	
+}
+
+.con3{
+	padding-top: 900px;
+	background-color: #D6C7F5;
+	
+}
