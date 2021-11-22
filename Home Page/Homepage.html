@@ -126,8 +126,9 @@ function homePage(){
 
 
 			img.src= parse_json[i].Profile_URL;
-			li.innerHTML = parse_json[i].FriendID + " " + parse_json[i].First_Name + " " +parse_json[i].Last_Name;
-			
+			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name;
+			li.setAttribute('id', i);
+			li.setAttribute('friendID',  parse_json[i].FriendID);
 			listImg = ul.appendChild(img) + ul.appendChild(li);
 		};listDiv.appendChild(ul);
 
