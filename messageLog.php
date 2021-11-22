@@ -16,7 +16,7 @@
             die("Connection failed: " . $conn->connect_error);
         }else{
             //SQL query for messages
-            $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = '1' AND ReceiverID = '2' INNER JOIN ";
+            $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = '1' AND ReceiverID = '2'";
             $SQL_Reciever = "SELECT * FROM `messaging` WHERE SenderID = '2' AND ReceiverID = '1'";
 
 

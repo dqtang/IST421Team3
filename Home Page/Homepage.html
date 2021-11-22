@@ -91,22 +91,14 @@ function homePage(){
 <input type ="text" placeholder="comment...." class="center" >
 </div>
 
-<div class="container3"> <figcaption>Friends</figcaption> 
+<div class="container3" id="ID"> <figcaption>Friends</figcaption> 
 <p>__________________________________________________</p>
 
-<ul> 
-<dt class="list"></dt>
+<list id ="list">
 
-<dt class="space"><a><img src="tech.PNG" width = "30px" height = "30px"/>Anzar_1</a></dt>
-<dt class="space"><a><img src="image.png" alt="poojan2211"/></a></dt>
-<dt class="space"><a><img src="image.png" alt="Chrisandy334"/></a></dt>
-
-
-<dt class="space" id="space"><a><img src="image.png" alt="RayMosam331"/></a></dt>
-
-
-</ul>
+</list>
 </div>
+
 <script>
 	const xhttp = new XMLHttpRequest();
 
@@ -116,9 +108,30 @@ function homePage(){
 	xhttp.send("gID="+gID);
 	xhttp.onload = function(){
 		//this.responseText is the JSON data
-		document.getElementById("space").innerHTML = this.responseText;
-		
-	}
+		//document.getElementById("space").innerHTML = this.responseText;
+		var strFriend = this.responseText;
+		//var jsonFriend = JSON.stringify(strFriend);
+
+		var parse_json = JSON.parse(strFriend);
+		console.log(parse_json);
+		console.log("FriendID:" +parse_json[1].FriendID);
+
+
+		var listDiv=document.getElementById('list');
+		var ul=document.createElement('ul');
+		for( var i=0; i<parse_json.length; ++i){
+			const img = document.createElement('img');
+			var li=document.createElement('li');
+
+
+
+			img.src= parse_json[i].Profile_URL;
+			li.innerHTML = parse_json[i].FriendID + " " + parse_json[i].First_Name + " " +parse_json[i].Last_Name;
+			
+			listImg = ul.appendChild(img) + ul.appendChild(li);
+		};listDiv.appendChild(ul);
+
+	};
 
 </script>
 
