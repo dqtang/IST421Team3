@@ -119,18 +119,33 @@ function homePage(){
 
 		var listDiv=document.getElementById('list');
 		var ul=document.createElement('ul');
+
+
 		for( var i=0; i<parse_json.length; ++i){
 			const img = document.createElement('img');
 			var li=document.createElement('li');
 
-
-
 			img.src= parse_json[i].Profile_URL;
 			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name;
+
+
 			li.setAttribute('id', i);
 			li.setAttribute('friendID',  parse_json[i].FriendID);
+
+
 			listImg = ul.appendChild(img) + ul.appendChild(li);
 		};listDiv.appendChild(ul);
+		
+
+		$(document).ready(function() { 
+   			$("#list li").click(function() {
+
+			
+			  var fID= $(this).attr('friendid');
+			  location.href = "http:localhost/messageChat.html?friend_id=" + fID +"&id_token=" + id_token;
+			
+			});
+});
 
 	};
 
