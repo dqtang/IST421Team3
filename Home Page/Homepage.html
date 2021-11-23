@@ -131,7 +131,7 @@ function homePage(){
 
 			li.setAttribute('id', i);
 			li.setAttribute('friendID',  parse_json[i].FriendID);
-
+			li.setAttribute('friendName', parse_json[i].First_Name + " " +parse_json[i].Last_Name);
 
 			listImg = ul.appendChild(img) + ul.appendChild(li);
 		};listDiv.appendChild(ul);
@@ -141,8 +141,10 @@ function homePage(){
    			$("#list li").click(function() {
 
 			
-			  var fID= $(this).attr('friendid');
-			  location.href = "http:localhost/messageChat.html?friend_id=" + fID +"&id_token=" + id_token;
+				var fID= $(this).attr('friendid');
+				var fName = $(this).attr('friendName');
+
+			  	location.href = "http:localhost/messageChat.html?friend_id=" + fID +"&id_token=" + id_token + "&fName=" + fName;
 			
 			});
 });
