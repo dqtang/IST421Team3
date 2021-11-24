@@ -9,7 +9,7 @@
     
     <script>
     function homePage(){
-        location.href = "http://localhost/Home Page/Homepage.html?id_token="+id_token;
+        location.href = "http://localhost/Homepage.html?id_token="+id_token;
     }
 </script>
 <a >New Post</a>
@@ -42,7 +42,7 @@
   <body>
       <!-- Form to upload image to server with gID && id_token-->
 <div id="content"  class="Con2" >
-<img src="Home page/plus.PNG" width="416" height="416" alt="" class = "center"/>
+<img src="plus.PNG" width="416" height="416" alt="" class = "center"/>
   <form method="POST" action="http://localhost/upload.php" enctype="multipart/form-data">
       <input type="file" name="uploadfile" value=""/>
       <input type="hidden" id = "gID" name = "gID"> 

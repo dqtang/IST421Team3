@@ -23,7 +23,7 @@
             $sql = "INSERT INTO profile_information (First_Name, Last_Name, Phone_Number, DOB, Email, Profile_ID, Profile_URL) VALUES ('$firstName', '$lastName', '$phoneNumber','$DoB','$email', '$gID', '$profileImageUrl')";
 
             if ($conn->query($sql) === TRUE){
-                  header("Location: http://localhost/Home Page/Homepage.html?id_token=".$id_token);
+                  header("Location: http://localhost/Homepage.html?id_token=".$id_token);
                   exit();
 
             }else{

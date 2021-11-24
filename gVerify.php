@@ -39,7 +39,7 @@ if ($payload) {
                   $sqlUpdate ="UPDATE profile_information SET Profile_URL = '$profileImageUrl' where Profile_ID='$userid'";
                   if($conn->query($sqlUpdate)===TRUE){
                         //Redirect to User's Home
-                        echo "http://localhost/Home Page/Homepage.html";
+                        echo "http://localhost/Homepage.html";
 
                   }else{
                         echo "Connection Failure.";
