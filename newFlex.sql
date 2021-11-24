@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2021 at 03:03 AM
+-- Generation Time: Nov 24, 2021 at 09:46 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -24,26 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credentials`
---
-
-CREATE TABLE `credentials` (
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(10) NOT NULL,
-  `Profile ID` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `friends_list`
 --
 
 CREATE TABLE `friends_list` (
-  `ProfileID` int(50) NOT NULL,
-  `URL` varchar(1000) NOT NULL,
-  `FriendID` varchar(50) NOT NULL
+  `ProfileID` varchar(50) NOT NULL,
+  `FriendID` varchar(50) NOT NULL,
+  `table_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `friends_list`
+--
+
+INSERT INTO `friends_list` (`ProfileID`, `FriendID`, `table_id`) VALUES
+('1', '2', 1),
+('113862044103668208907', '222', 2),
+('2', '1', 3),
+('113862044103668208907', '333', 4),
+('113862044103668208907', '555', 6);
 
 -- --------------------------------------------------------
 
@@ -73,10 +72,20 @@ INSERT INTO `messaging` (`SenderID`, `ReceiverID`, `Messages`) VALUES
 
 CREATE TABLE `post_information` (
   `Picture` varbinary(10000) NOT NULL,
-  `Comments` varchar(500) NOT NULL,
-  `Likes` int(225) NOT NULL,
-  `Post Id` int(11) NOT NULL
+  `Post Id` int(11) NOT NULL,
+  `Profile_ID` varchar(50) NOT NULL,
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `post_information`
+--
+
+INSERT INTO `post_information` (`Picture`, `Post Id`, `Profile_ID`, `TimeStamp`) VALUES
+(0x436170747572652e4a5047, 8, '', '2021-11-23 17:55:27'),
+(0x436170747572652e4a5047, 9, '113862044103668208907', '2021-11-23 17:55:27'),
+(0x436170747572652e4a5047, 10, '113862044103668208907', '2021-11-23 17:55:27'),
+(0x436170747572652e4a5047, 11, '113862044103668208907', '2021-11-23 17:55:27');
 
 -- --------------------------------------------------------
 
@@ -100,23 +109,21 @@ CREATE TABLE `profile_information` (
 
 INSERT INTO `profile_information` (`First_Name`, `Last_Name`, `Phone_Number`, `DOB`, `Profile_ID`, `Profile_URL`, `Email`) VALUES
 ('Test', '1', '', '0000-00-00', '1', '', ''),
-('Test2', '2', '', '0000-00-00', '2', '', '');
+('Dennis', 'Tang', '6462672420', '1997-01-22', '113862044103668208907', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', 'dqt5211@gmail.com'),
+('Test2', '2', '', '0000-00-00', '2', '', ''),
+('Test', 'Friend', '', '0000-00-00', '222', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', ''),
+('Another', 'Friend', '', '0000-00-00', '333', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', ''),
+('NEw', 'Friend', '', '0000-00-00', '555', '', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `credentials`
---
-ALTER TABLE `credentials`
-  ADD UNIQUE KEY `Profile ID` (`Profile ID`);
-
---
 -- Indexes for table `friends_list`
 --
 ALTER TABLE `friends_list`
-  ADD UNIQUE KEY `Profile ID` (`ProfileID`);
+  ADD PRIMARY KEY (`table_id`);
 
 --
 -- Indexes for table `post_information`
@@ -135,10 +142,16 @@ ALTER TABLE `profile_information`
 --
 
 --
+-- AUTO_INCREMENT for table `friends_list`
+--
+ALTER TABLE `friends_list`
+  MODIFY `table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `post_information`
 --
 ALTER TABLE `post_information`
-  MODIFY `Post Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Post Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

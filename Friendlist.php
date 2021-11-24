@@ -14,7 +14,9 @@
             die("Connection failed: " . $conn->connect_error);
       }else{
             //Queries User's freinds from server
-            $sql = "SELECT friend.FriendID, Names.First_Name, Names.Last_Name, Names.Profile_URL FROM friends_list AS friend INNER JOIN profile_information AS Names ON friend.FriendID = Names.Profile_ID WHERE friend.ProfileID = $gID";
+            $sql = "SELECT friend.FriendID, Names.First_Name, Names.Last_Name, Names.Profile_URL FROM friends_list AS friend 
+                        INNER JOIN profile_information AS Names ON friend.FriendID = Names.Profile_ID 
+                              WHERE friend.ProfileID = $gID";
             
             $queryResult = $conn->query($sql);
 

@@ -61,9 +61,12 @@ function homePage(){
 </header>
 
 	
-<div> <a> <img class= "profilePic" alt="image" src="tech.PNG" id = "profilePic" width = "30px" height="30px"/> </a>
+<div class="profilePic"> <a> <img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic"/> </a>
 </div>
-
+<script>
+	//Change Profile Pic
+	$(".profilePic").attr("src", profileImageUrl);
+</script>
 <div class="container2" > <a> <img src="tech.PNG"  width = "30px" height="30px"/> DT200</a>
 </div>
 <div class = "center">
@@ -71,14 +74,7 @@ function homePage(){
 <input type ="text" placeholder="comment...." class="center" >
 </div>
 
-	
 
-<div class="container2" > <a> <img src="tech.PNG"  width = "30px" height="30px"/> DT200</a>
-</div>
-<script>
-	//Change Profile Pic
-	$(".profilePic").attr("src", profileImageUrl);
-</script>
 <div class = "center">
 <img src="tech.PNG" width="250" height="250" alt="" class="center"/>
 <input type ="text" placeholder="comment...." class="center" >
@@ -91,6 +87,28 @@ function homePage(){
 <input type ="text" placeholder="comment...." class="center" >
 </div>
 
+<script>
+	
+
+	$.ajax({
+		url:"http://localhost/AllPost.php",
+		type:'GET',
+		data: {'a':'a'},
+		success: function(data){
+			var postActivity = data;
+
+			var cont;
+			
+		}
+	})
+
+
+</script>
+
+
+
+
+
 <div class="container3" id="ID"> <figcaption>Friends</figcaption> 
 <p>__________________________________________________</p>
 
@@ -101,7 +119,6 @@ function homePage(){
 
 <script>
 	const xhttp = new XMLHttpRequest();
-
 
 	xhttp.open("POST", "http://localhost/Friendlist.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -138,16 +155,15 @@ function homePage(){
 		
 
 		$(document).ready(function() { 
-   			$("#list li").click(function() {
 
-			
+   			$("#list li").click(function() {
 				var fID= $(this).attr('friendid');
 				var fName = $(this).attr('friendName');
 
 			  	location.href = "http:localhost/messageChat.html?friend_id=" + fID +"&id_token=" + id_token + "&fName=" + fName;
 			
 			});
-});
+		});
 
 	};
 
