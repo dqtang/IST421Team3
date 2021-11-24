@@ -39,8 +39,7 @@
   #loginform {
     margin: 0 auto;
     padding-bottom: 25px;
-    background: #eee;
-    width: 600px;
+    background: #D6C7F5;
     max-width: 100%;
     border: 2px solid #212121;
     border-radius: 4px;
@@ -64,7 +63,7 @@
     padding: 10px;
     background: #fff;
     height: 300px;
-    width: 530px;
+    width: 700px;
     border: 1px solid #a7a7a7;
     overflow: auto;
     border-radius: 4px;
@@ -85,8 +84,8 @@
   
   #submitmsg,
   #enter{
-    background: #ff9800;
-    border: 2px solid #e65100;
+    background: #0E7246;
+    border: 2px solid #002C21;
     color: white;
     padding: 4px 10px;
     font-weight: bold;
