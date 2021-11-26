@@ -6,7 +6,19 @@
 <title>Home Page</title>
 </head>
 <link href="homeP.css" rel="stylesheet" type="text/css">	
+<style>
+	li {
+  text-align: center;
+  list-style: inside;
+  
+}
+	.activityImage{
+		display: block;
+  margin-left: auto;
+  margin-right: auto;
 
+	}
+	</style>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
@@ -46,15 +58,14 @@
 
 
 <script>
-	//Redirect Functions to include id_tokens
-function uploadPage() {
-    location.href = "http://localhost/upload.html?id_token="+id_token;
-}
+		//Redirect Functions to include id_tokens
+	function uploadPage() {
+		location.href = "http://localhost/upload.html?id_token="+id_token;
+	}
 
-function homePage(){
-	location.href = "http://localhost/Homepage.html?id_token="+id_token;
-}
-
+	function homePage(){
+		location.href = "http://localhost/Homepage.html?id_token="+id_token;
+	}
 </script>
 
 		
@@ -67,24 +78,12 @@ function homePage(){
 	//Change Profile Pic
 	$(".profilePic").attr("src", profileImageUrl);
 </script>
-<div class="container2" > <a> <img src="tech.PNG"  width = "30px" height="30px"/> DT200</a>
-</div>
-<div class = "center">
-<img src="tech.PNG" width="250" height="250" alt="" class="center"/>
-<input type ="text" placeholder="comment...." class="center" >
-</div>
 
 
-<div class = "center">
-<img src="tech.PNG" width="250" height="250" alt="" class="center"/>
-<input type ="text" placeholder="comment...." class="center" >
-</div>
-	
-<div class="center" > <a> <img src="tech.PNG"  width = "30px" height="30px"/> DT200</a>
-</div>
-<div class = "center">
-<img src="tech.PNG" width="250" height="250" alt="" class="center"/>
-<input type ="text" placeholder="comment...." class="center" >
+<div class = "container2" id="RecentPosts">
+<a>
+	<list id="RecentPostLists" class="postList" >
+		</list></a>
 </div>
 
 <script>
@@ -97,8 +96,33 @@ function homePage(){
 		success: function(data){
 			var postActivity = data;
 
-			var cont;
+			var parse_postActivity = JSON.parse(postActivity);
+			console.log(parse_postActivity);
 			
+		var listDiv=document.getElementById('RecentPostLists');
+		var ul=document.createElement('ul');
+
+		ul.setAttribute("style", "list-style-type:none");
+		
+		for( var i=0; i<parse_postActivity.length; ++i){
+			const img = document.createElement('img');
+			var li=document.createElement('li');
+
+			img.src= "http://localhost/image/" + parse_postActivity[i].Picture;
+
+			img.setAttribute('width', '300px');
+			img.setAttribute('height', '300px');
+			img.setAttribute('class','activityImage');
+
+			li.setAttribute("style", "list-style-type:none");
+
+			li.innerHTML = parse_postActivity[i].First_Name + " " +parse_postActivity[i].Last_Name;
+
+			listImg = ul.appendChild(li) + ul.appendChild(img);
+		};listDiv.appendChild(ul);
+		
+
+
 		}
 	})
 
@@ -136,21 +160,26 @@ function homePage(){
 
 		var listDiv=document.getElementById('list');
 		var ul=document.createElement('ul');
-
+		ul.setAttribute("style", "list-style-type:none");
 
 		for( var i=0; i<parse_json.length; ++i){
 			const img = document.createElement('img');
 			var li=document.createElement('li');
 
 			img.src= parse_json[i].Profile_URL;
-			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name;
+			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name + "&nbsp" + "&nbsp" + "&nbsp";
 
+			li.setAttribute("style", "list-style-type:none");
 
 			li.setAttribute('id', i);
 			li.setAttribute('friendID',  parse_json[i].FriendID);
-			li.setAttribute('friendName', parse_json[i].First_Name + " " +parse_json[i].Last_Name);
-
-			listImg = ul.appendChild(img) + ul.appendChild(li);
+			li.setAttribute('friendName', parse_json[i].First_Name + " " +parse_json[i].Last_Name );
+			img.setAttribute('width', '25px');
+			img.setAttribute('height', '25px');
+			
+			
+			listImg = ul.appendChild(li);
+			listImg.appendChild(img);
 		};listDiv.appendChild(ul);
 		
 

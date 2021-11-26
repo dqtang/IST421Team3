@@ -8,9 +8,8 @@
 
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        //$SenderID = $_GET["SenderID"];
-        //$ReceiverID = $_GET["ReceiverID"];
-        //$Messages = $_GET["Messages"];
+        $SenderID = $_POST["SenderID"];
+        $ReceiverID = $_POST["ReceiverID"];
 
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -18,8 +17,8 @@
 
 
             //SQL query for messages
-            $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = '1' AND ReceiverID = '2'";
-            $SQL_Reciever = "SELECT * FROM `messaging` WHERE SenderID = '2' AND ReceiverID = '1'";
+            $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = $SenderID AND ReceiverID = $ReceiverID";
+            $SQL_Reciever = "SELECT * FROM `messaging` WHERE SenderID = $ReceiverID AND ReceiverID = $SenderID";
 
 
             //put query results into arrays and echo in json to html
