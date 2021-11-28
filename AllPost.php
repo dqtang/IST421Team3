@@ -12,7 +12,7 @@
       }else{
             $sql = "SELECT post.Picture, post.Profile_ID, Names.First_Name, Names.Last_Name, Names.Profile_URL FROM post_information as post 
                         INNER JOIN profile_information as Names ON post.Profile_ID = Names.Profile_ID 
-                              Order BY TimeStamp ASC";
+                              Order BY TimeStamp DESC";
 
             $queryResult = $conn->query($sql);
 

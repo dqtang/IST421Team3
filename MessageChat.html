@@ -46,7 +46,21 @@
                 <p class="logout"><a id="exit" onclick="homePage()">Exit Chat</a></p>
             </div>
 
-            <div id="chatbox"></div>
+            <p id = "friendname">NAME</p>
+
+            <script>
+                document.getElementById("friendname").innerHTML = fName;
+            </script>
+
+            <div id="chatbox">
+
+                <list id="list">
+
+                </list>
+                
+                
+
+            </div>
 
             <form name="message" action="http://localhost/SendMessage.php" method="post">
                 <input name="Messages" type="text" id="Messages" />
@@ -72,6 +86,81 @@
 
 
 <script>
+
+    window.onload = chatlog;
+function chatlog(){
+
+    $.ajax({
+        url:"http://localhost/messageLog.php",
+		type:'POST', async:true,
+		data: {'SenderID':SenderID,
+                'ReceiverID':friendID},
+            success: function(data){
+                //alert(data);
+                var messageLogJson = data;
+                    //console.log(messageLogJson);
+
+                var parseMessageLogJson= JSON.parse(messageLogJson);
+                    //console.log(parseMessageLogJson);
+
+                var organized = parseMessageLogJson.sort(function (a, b) { return a.TimeStamp.localeCompare(b.TimeStamp); });
+                    console.log(organized);
+
+                    $(document).ready(function() { 
+
+                        var listDiv=document.getElementById('list');
+                        var ul=document.createElement('ul');
+
+                        list.innerHTML = '';
+
+                        ul.setAttribute("style", "list-style-type:none");
+
+                        for( var i=0; i<organized.length; ++i){
+
+                            var li=document.createElement('li');
+
+
+                            li.setAttribute("style", "list-style-type:none");
+
+                            if(organized[i].SenderID == SenderID){
+                                li.setAttribute("class", 'SenderID');
+                            }else{
+                                li.setAttribute("class", "FriendID");
+                            }
+
+                            li.innerHTML = organized[i].Messages;
+
+                            listImg = ul.appendChild(li);
+                        };listDiv.appendChild(ul);
+
+                        });
+            }
+    }).done(chatlog);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
     const xhttp = new XMLHttpRequest();
 
     xhttp.open("POST", "http://localhost/messageLog.php", true);
@@ -79,14 +168,44 @@
     xhttp.send("SenderID="+SenderID+"&ReceiverID="+friendID);
     xhttp.onload = function(){
 
-        var json_test = this.responseText;
-            console.log(json_test);
-            
+        var messageLogJson = this.responseText;
+            console.log(messageLogJson);
+
+        var parseMessageLogJson= JSON.parse(messageLogJson);
+            //console.log(parseMessageLogJson);
+
+        var organized = parseMessageLogJson.sort(function (a, b) { return a.TimeStamp.localeCompare(b.TimeStamp); });
+
+                    console.log(organized);
+
 		$(document).ready(function() { 
+
+            var listDiv=document.getElementById('list');
+		    var ul=document.createElement('ul');
+
+		    ul.setAttribute("style", "list-style-type:none");
+
+            for( var i=0; i<organized.length; ++i){
+
+                var li=document.createElement('li');
+
+
+                li.setAttribute("style", "list-style-type:none");
+
+                if(organized[i].SenderID == SenderID){
+                    li.setAttribute("class", 'SenderID');
+                }else{
+                    li.setAttribute("class", "FriendID");
+                }
+
+                li.innerHTML = organized[i].Messages;
+
+                listImg = ul.appendChild(li);
+		    };listDiv.appendChild(ul);
 
         });
 
-    };
+    };*/
 
 </script>
     </body>

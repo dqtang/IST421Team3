@@ -17,8 +17,8 @@
 
 
             //SQL query for messages
-            $SQL_Sender = "SELECT * FROM `messaging` WHERE SenderID = $SenderID AND ReceiverID = $ReceiverID";
-            $SQL_Reciever = "SELECT * FROM `messaging` WHERE SenderID = $ReceiverID AND ReceiverID = $SenderID";
+            $SQL_Sender = "SELECT * FROM messaging AS m WHERE m.SenderID = $SenderID AND m.ReceiverID = $ReceiverID ";
+            $SQL_Reciever = "SELECT * FROM messaging AS m WHERE m.SenderID = $ReceiverID AND m.ReceiverID = $SenderID ";
 
 
             //put query results into arrays and echo in json to html
@@ -29,7 +29,7 @@
                     $emparray[] = $row;
 
                 }                   
-                echo json_encode($emparray);
+                //echo json_encode($emparray);
 
 
             }
@@ -43,7 +43,7 @@
 
                 }
                 
-                echo json_encode($recarray);
+                echo json_encode($recarray+$emparray);
             }
 
         }

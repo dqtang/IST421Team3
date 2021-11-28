@@ -73,7 +73,12 @@
 
 	
 <div class="profilePic"> <a> <img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic"/> </a>
+
+
+
 </div>
+
+
 <script>
 	//Change Profile Pic
 	$(".profilePic").attr("src", profileImageUrl);
@@ -81,13 +86,19 @@
 
 
 <div class = "container2" id="RecentPosts">
+	<div class="container3" id="ID"> <figcaption>Friends</figcaption> 
+		<p>________________________________</p>
+		
+		<list id ="list">
+		
+		</list>
+		</div>
 <a>
 	<list id="RecentPostLists" class="postList" >
 		</list></a>
 </div>
 
 <script>
-	
 
 	$.ajax({
 		url:"http://localhost/AllPost.php",
@@ -99,28 +110,28 @@
 			var parse_postActivity = JSON.parse(postActivity);
 			console.log(parse_postActivity);
 			
-		var listDiv=document.getElementById('RecentPostLists');
-		var ul=document.createElement('ul');
+			var listDiv=document.getElementById('RecentPostLists');
+			var ul=document.createElement('ul');
 
-		ul.setAttribute("style", "list-style-type:none");
-		
-		for( var i=0; i<parse_postActivity.length; ++i){
-			const img = document.createElement('img');
-			var li=document.createElement('li');
+			ul.setAttribute("style", "list-style-type:none");
+			
+			for( var i=0; i<parse_postActivity.length; ++i){
+				const img = document.createElement('img');
+				var li=document.createElement('li');
 
-			img.src= "http://localhost/image/" + parse_postActivity[i].Picture;
+				img.src= "http://localhost/image/" + parse_postActivity[i].Picture;
 
-			img.setAttribute('width', '300px');
-			img.setAttribute('height', '300px');
-			img.setAttribute('class','activityImage');
+				img.setAttribute('width', '200px');
+				img.setAttribute('height', '200px');
+				img.setAttribute('class','activityImage');
 
-			li.setAttribute("style", "list-style-type:none");
+				li.setAttribute("style", "list-style-type:none");
 
-			li.innerHTML = parse_postActivity[i].First_Name + " " +parse_postActivity[i].Last_Name;
+				li.innerHTML = parse_postActivity[i].First_Name + " " +parse_postActivity[i].Last_Name;
 
-			listImg = ul.appendChild(li) + ul.appendChild(img);
-		};listDiv.appendChild(ul);
-		
+				listImg = ul.appendChild(li) + ul.appendChild(img);
+			};listDiv.appendChild(ul);
+			
 
 
 		}
@@ -131,16 +142,6 @@
 
 
 
-
-
-<div class="container3" id="ID"> <figcaption>Friends</figcaption> 
-<p>__________________________________________________</p>
-
-<list id ="list">
-
-</list>
-</div>
-
 <script>
 	const xhttp = new XMLHttpRequest();
 
@@ -149,14 +150,9 @@
 	xhttp.send("gID="+gID);
 	xhttp.onload = function(){
 		//this.responseText is the JSON data
-		//document.getElementById("space").innerHTML = this.responseText;
 		var strFriend = this.responseText;
-		//var jsonFriend = JSON.stringify(strFriend);
 
 		var parse_json = JSON.parse(strFriend);
-		//console.log(parse_json);
-		//console.log("FriendID:" +parse_json[1].FriendID);
-
 
 		var listDiv=document.getElementById('list');
 		var ul=document.createElement('ul');
@@ -166,18 +162,22 @@
 			const img = document.createElement('img');
 			var li=document.createElement('li');
 
+
 			img.src= parse_json[i].Profile_URL;
 			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name + "&nbsp" + "&nbsp" + "&nbsp";
 
+			//Sets attribute for list items
 			li.setAttribute("style", "list-style-type:none");
 
+			//Sets attribute for friends
 			li.setAttribute('id', i);
 			li.setAttribute('friendID',  parse_json[i].FriendID);
 			li.setAttribute('friendName', parse_json[i].First_Name + " " +parse_json[i].Last_Name );
+			//Resize profile image in friends list
 			img.setAttribute('width', '25px');
 			img.setAttribute('height', '25px');
 			
-			
+			//Add elements to ul and list
 			listImg = ul.appendChild(li);
 			listImg.appendChild(img);
 		};listDiv.appendChild(ul);

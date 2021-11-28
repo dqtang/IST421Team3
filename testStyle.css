@@ -105,6 +105,13 @@
     flex: 1;
   }
   
+  #friendname{
+    position: relative;
+    width: 700px;
+    margin: 0 auto;
+    color: blue;
+  }
+
   a#exit {
     color: white;
     background: #c62828;
@@ -141,3 +148,12 @@
     background: orangered;
   }
 
+  .SenderID{
+    text-align: right;
+    color: red;
+  }
+  .FriendID{
+    text-align: left;
+    color: blue;
+
+  }
