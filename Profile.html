@@ -3,7 +3,7 @@
 <head> 
 <link rel="stylesheet" href="Profile.css" type = "text/css">
 <meta charset="utf-8">
-<title>Instagram Profile Page</title>
+<title>Flex Media Profile Page</title>
 	
 <style>
 	
@@ -77,7 +77,6 @@
 <div>
 	<div class="profile">
 
-		
 
 			<div class="profile-user-settings">
 
@@ -90,9 +89,9 @@
 
 			<div class="profile-stats">
 
-				<ul>
-					<li><span class="profile-stat-count" id="postCount">0</span> posts</li>
-
+	
+					<li><span class="profile-stat-count" id="postCount">0</span> Posts</li>
+					<li><span class="like-stat-count" id="likeCount">0</span> Likes</li>
 				</ul>
 
 			</div>
@@ -174,11 +173,11 @@
 						listImg = ul.appendChild(li) + ul.appendChild(img) + ul.appendChild(li2);
 					};listDiv.appendChild(ul);
 					
-		
+					document.getElementById("postCount").innerHTML= parse_userActivity.length;
 		
 				}
 			})
-		document.getElementById("postCount").innerHTML= parse_userActivity.length;
+
 		
 		</script>
 		<!-- End of gallery -->
