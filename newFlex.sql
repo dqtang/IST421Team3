@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 02:09 AM
+-- Generation Time: Dec 01, 2021 at 09:47 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `flexmedia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `credential`
+--
+
+CREATE TABLE `credential` (
+  `Credential_ID` int(11) NOT NULL,
+  `Username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `UserID` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -54,7 +67,7 @@ CREATE TABLE `messaging` (
   `SenderID` varchar(25) NOT NULL,
   `ReceiverID` varchar(25) NOT NULL,
   `Messages` varchar(450) NOT NULL,
-  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -122,7 +135,40 @@ INSERT INTO `messaging` (`SenderID`, `ReceiverID`, `Messages`, `TimeStamp`) VALU
 ('113862044103668208907', '222', '', '2021-12-01 00:32:51'),
 ('113862044103668208907', '222', 'wd', '2021-12-01 00:36:25'),
 ('222', '113862044103668208907', 'Test', '2021-12-01 00:42:08'),
-('55', '1', 'Hello Test Empty', '2021-12-01 00:45:06');
+('55', '1', 'Hello Test Empty', '2021-12-01 00:45:06'),
+('113862044103668208907', '222', 'ffds', '2021-12-01 01:14:25'),
+('113862044103668208907', '555', 'aaa', '2021-12-01 01:25:14'),
+('', '', 'amazing', '2021-12-01 07:04:44'),
+('113862044103668208907', '222', 'fd', '2021-12-01 07:13:05'),
+('113862044103668208907', '222', 'FF', '2021-12-01 07:14:54'),
+('113862044103668208907', '222', 'nn', '2021-12-01 07:15:00'),
+('113862044103668208907', '222', 'aa', '2021-12-01 07:15:18'),
+('113862044103668208907', '222', 'aaa', '2021-12-01 07:15:46'),
+('113862044103668208907', '222', 'New', '2021-12-01 07:15:51'),
+('113862044103668208907', '222', 'My new Message Test!', '2021-12-01 07:16:21'),
+('113862044103668208907', '555', 'ww', '2021-12-01 07:24:24'),
+('113862044103668208907', '333', 'New', '2021-12-01 07:35:07'),
+('113862044103668208907', '333', 'a', '2021-12-01 07:36:57'),
+('113862044103668208907', '333', '', '2021-12-01 07:37:58'),
+('113862044103668208907', '333', '', '2021-12-01 07:37:59'),
+('113862044103668208907', '333', '', '2021-12-01 07:37:59'),
+('113862044103668208907', '333', '', '2021-12-01 07:37:59'),
+('113862044103668208907', '333', '', '2021-12-01 07:37:59'),
+('113862044103668208907', '333', 'M', '2021-12-01 07:38:24'),
+('113862044103668208907', '333', 'aa', '2021-12-01 07:39:03'),
+('113862044103668208907', '333', 'Sent', '2021-12-01 07:39:34'),
+('113862044103668208907', '333', 'Test', '2021-12-01 07:39:49'),
+('113862044103668208907', '333', '0', '2021-12-01 07:40:25'),
+('113862044103668208907', '333', '1', '2021-12-01 07:40:36'),
+('113862044103668208907', '333', '1', '2021-12-01 07:40:38'),
+('113862044103668208907', '333', '1', '2021-12-01 07:40:39'),
+('113862044103668208907', '333', '1', '2021-12-01 07:40:40'),
+('113862044103668208907', '333', '1', '2021-12-01 07:40:40'),
+('113862044103668208907', '333', 'aa', '2021-12-01 07:40:48'),
+('113862044103668208907', '333', 'fa', '2021-12-01 07:40:57'),
+('113862044103668208907', '333', 'async request', '2021-12-01 07:41:45'),
+('113862044103668208907', '222', 'Hi', '2021-12-01 20:22:59'),
+('222', '113862044103668208907', 'A', '2021-12-01 20:23:19');
 
 -- --------------------------------------------------------
 
@@ -132,21 +178,18 @@ INSERT INTO `messaging` (`SenderID`, `ReceiverID`, `Messages`, `TimeStamp`) VALU
 
 CREATE TABLE `post_information` (
   `Picture` varbinary(10000) NOT NULL,
-  `Post Id` int(11) NOT NULL,
+  `Post_ID` int(11) NOT NULL,
   `Profile_ID` varchar(50) NOT NULL,
-  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post_information`
 --
 
-INSERT INTO `post_information` (`Picture`, `Post Id`, `Profile_ID`, `TimeStamp`) VALUES
-(0x436170747572652e4a5047, 8, '', '2021-11-23 17:55:27'),
-(0x436170747572652e4a5047, 9, '113862044103668208907', '2021-11-23 17:55:27'),
-(0x436170747572652e4a5047, 10, '113862044103668208907', '2021-11-23 17:55:27'),
-(0x436170747572652e4a5047, 11, '113862044103668208907', '2021-11-23 17:55:27'),
-(0x737320416d617a6f6e2e4a5047, 12, '113862044103668208907', '2021-11-28 22:09:18');
+INSERT INTO `post_information` (`Picture`, `Post_ID`, `Profile_ID`, `TimeStamp`, `Likes`) VALUES
+(0x436170747572652e4a5047, 18, '113862044103668208907', '2021-12-01 20:19:14', 0);
 
 -- --------------------------------------------------------
 
@@ -181,6 +224,13 @@ INSERT INTO `profile_information` (`First_Name`, `Last_Name`, `Phone_Number`, `D
 --
 
 --
+-- Indexes for table `credential`
+--
+ALTER TABLE `credential`
+  ADD PRIMARY KEY (`Credential_ID`),
+  ADD UNIQUE KEY `Cred>Profile` (`UserID`);
+
+--
 -- Indexes for table `friends_list`
 --
 ALTER TABLE `friends_list`
@@ -190,7 +240,7 @@ ALTER TABLE `friends_list`
 -- Indexes for table `post_information`
 --
 ALTER TABLE `post_information`
-  ADD PRIMARY KEY (`Post Id`),
+  ADD PRIMARY KEY (`Post_ID`),
   ADD KEY `Profile_ID` (`Profile_ID`);
 
 --
@@ -204,6 +254,12 @@ ALTER TABLE `profile_information`
 --
 
 --
+-- AUTO_INCREMENT for table `credential`
+--
+ALTER TABLE `credential`
+  MODIFY `Credential_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `friends_list`
 --
 ALTER TABLE `friends_list`
@@ -213,7 +269,7 @@ ALTER TABLE `friends_list`
 -- AUTO_INCREMENT for table `post_information`
 --
 ALTER TABLE `post_information`
-  MODIFY `Post Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
