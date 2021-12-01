@@ -52,7 +52,7 @@
 <body>
 
 	<header>
-		<h3>mray2958</h3>
+		<h3 id ="Name">User</h3>
 		<hr>
 	</header>
 	
@@ -64,10 +64,12 @@
 			<script>
 				//Change Profile Pic
 				$(".profilePic").attr("src", profileImageUrl);
+
+				document.getElementById("Name").innerHTML = firstName + " " + lastName;
 			</script>
 
 	</section>
-	<hr>
+	</hr>
 
 </body>
 </html>
@@ -81,7 +83,6 @@
 
 				<h1 class="may2958">&nbsp;</h1>
 
-				<button class="btn profile-edit-btn">Edit Profile</button>
 
 				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
 
@@ -90,18 +91,19 @@
 			<div class="profile-stats">
 
 				<ul>
-					<li><span class="profile-stat-count">2</span> posts</li>
-					<li><span class="profile-stat-count">50</span> followers</li>
-					<li><span class="profile-stat-count">55</span> following</li>
+					<li><span class="profile-stat-count" id="postCount">0</span> posts</li>
+
 				</ul>
 
 			</div>
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">mray2958</span></p>
+				<p class="profile-real-name" id="Name2">User</span></p>
 
 			</div>
+			<script> document.getElementById("Name2").innerHTML = firstName + " " + lastName;
+			</script>
 
 		</div>
 		<!-- End of profile section -->
@@ -118,41 +120,68 @@
 		<div class="gallery">
 
 			<div class="gallery-item" tabindex="0">
-				<hr>
 
-				<img src="file:///C:/Users/mosam/Desktop/image_light.jpg" class="gallery-image" alt="Lighting">
 
-				<div class="gallery-item-info">
 
-					<ul>
-						<li class="gallery-item-likes"><span class="aesthetic">Likes:</span><i class="Lighting" aria-hidden="true"></i> 75</li>
-						<li class="gallery-item-comments"><span class="aesthetic">Comments:</span><i class="t" aria-hidden="true"></i> 5</li>
-					</ul>
+				<list id="userRecentPostLists">
 
-				</div>
+
+				</list>
+
 
 			</div>
 
-			<div class="Cat wih mask" tabindex="0">
 
-				<img src="file:///C:/Users/mosam/Desktop/img_cat.jpg" class="gallery-image" alt="cat" >
 
-				<div class="gallery-item-info">
-
-					<ul>
-						<li class="gallery-item-likes"><span class="Cat with mask on">Likes:</span><i class="Black cat" aria-hidden="true"></i> 85</li>
-						<li class="gallery-item-comments"><span class="Cat with mask on">Comments:</span><i class="t" aria-hidden="true"></i> 2</li>
-					</ul>
-
-				</div>
-
-			</div>
 		</div>
 				
 			</div>
-		<!-- End of gallery -->
+		
 
-		<div class="loader"></div>
+		<script>
+
+			$.ajax({
+				url:"http://localhost/Profile.php",
+				type:'POST',
+				data: {'profileID':gID},
+				success: function(data){
+					var userActivity = data;
+		
+					var parse_userActivity = JSON.parse(userActivity);
+					console.log(parse_userActivity);
+					
+					var listDiv=document.getElementById('userRecentPostLists');
+					var ul=document.createElement('ul');
+		
+					ul.setAttribute("style", "list-style-type:none");
+					
+					for( var i=0; i<parse_userActivity.length; ++i){
+						const img = document.createElement('img');
+						var li=document.createElement('li');
+
+						var li2 = document.createElement('li2')
+		
+						img.src= "http://localhost/image/" + parse_userActivity[i].Picture;
+		
+						img.setAttribute('width', '400px');
+						img.setAttribute('height', '400px');
+						img.setAttribute('class','activityImage');
+		
+						li.setAttribute("style", "list-style-type:none");
+		
+						li.innerHTML = parse_userActivity[i].First_Name + " " +parse_userActivity[i].Last_Name;
+						li2.innerHTML = "Created On: " + parse_userActivity[i].TimeStamp +"<br>"+"<br>";
+						listImg = ul.appendChild(li) + ul.appendChild(img) + ul.appendChild(li2);
+					};listDiv.appendChild(ul);
+					
+		
+		
+				}
+			})
+		document.getElementById("postCount").innerHTML= parse_userActivity.length;
+		
+		</script>
+		<!-- End of gallery -->
 
 	
 	<!-- End of container -->
