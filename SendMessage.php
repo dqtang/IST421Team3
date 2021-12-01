@@ -11,8 +11,6 @@
         $SenderID = $_POST["SenderID"];
         $ReceiverID = $_POST["ReceiverID"];
         $Messages = $_POST["Messages"];
-        $id_token = $_POST["id_token"];
-        $fName = $_POST["fName"];
 
 
         if ($conn->connect_error) {
@@ -20,10 +18,10 @@
         }else{
             $SQL="INSERT INTO messaging (SenderID, ReceiverID, Messages) VALUES ('$SenderID', '$ReceiverID', '$Messages')";
             if ($conn->query($SQL)===TRUE){
-                header("Location: http://localhost/MessageChat.html?id_token=".$id_token."&friend_id=".$ReceiverID."&fName=".$fName);
-                exit();
+                echo 0;
+
             }else{
-                echo"failed to send message";
+                echo"Failed to send message.";
             }
 
         }

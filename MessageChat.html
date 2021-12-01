@@ -30,8 +30,6 @@
 			profileImageUrl = responsePayload.picture;
 			email = responsePayload.email;
 			SenderID = responsePayload.sub;
-            console.log(SenderID);
-
 
 	</script>
 <body>
@@ -58,36 +56,63 @@
 
             </div>
 
-            <form name="message" action="http://localhost/SendMessage.php" method="post">
+            <form name="message" >
                 <input name="Messages" type="text" id="Messages" />
-                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-                <input type="hidden" id = "SenderID" name = "SenderID"> 
-				<input type="hidden" id = "ReceiverID" name ="ReceiverID" > 
-				<input type="hidden" id = "id_token" name ="id_token"> 
-                <input type="hidden" id = "fName" name ="fName"> 
-
+                <button name="submitmsg" type="button" id="submitmsg" onclick="SendMessage()">Send</button>
 
 
             </form>
         </div>
-        <script type="text/javascript">
-            document.getElementById('id_token').value = id_token;	
-            document.getElementById('ReceiverID').value = friendID;	
-            document.getElementById('SenderID').value = SenderID;	
-            document.getElementById('fName').value = fName;	
-        function homePage(){
-                        location.href = "http://localhost/Homepage.html?id_token="+id_token;
-                    }    
-        </script>
+
+<script>
+    function homePage(){
+        location.href = "http://localhost/Homepage.html?id_token="+id_token;
+    }    
+
+
+    //Changes default 'Enter' key Submit form
+    //To running SendMessage() function 
+    $(document).ready(function() {
+    $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+        
+      event.preventDefault();
+      return SendMessage();
+    }
+  });
+});
+
+
+
+    function SendMessage(){
+        var Messages = document.getElementById('Messages').value;
+        $.ajax({
+            url:"http://localhost/SendMessage.php",
+            type:'POST', async:true,
+            data: {'SenderID':SenderID,
+                    'ReceiverID':friendID,
+                    'Messages':Messages},
+                success: function(data){
+
+                    if(data == 0){
+                        document.getElementById('Messages').value = "";
+                        chatlog();
+                    }else{
+                        alert(data);
+                    }
+                }
+            });}
+</script>
 
 
 <script>
+
 
     //start chatlog() function when page loads
     window.onload = chatlog();
     //calls chatlog ever 2.5secs
     setInterval(chatlog,2500);
-function chatlog(){
+    function chatlog(){
 
     //Sets old scroll height
     var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20;
@@ -105,7 +130,7 @@ function chatlog(){
 
                 var parseMessageLogJson= JSON.parse(messageLogJson);
                     
-
+                //Organizes messages by TimeStamp
                 var organized = parseMessageLogJson.sort(function (a, b) { return a.TimeStamp.localeCompare(b.TimeStamp); });
                     
 
@@ -125,10 +150,12 @@ function chatlog(){
 
                             li.setAttribute("style", "list-style-type:none");
 
+                            //Sets attribute class depending if the message is from the sender or reciever 
+                            //Allowing for CSS to change the message location and color 
                             if(organized[i].SenderID == SenderID){
                                 li.setAttribute("class", 'SenderID');
                             }else{
-                                li.setAttribute("class", "FriendID");
+                                li.setAttribute("class", 'FriendID');
                             }
 
                             li.innerHTML = organized[i].Messages;
