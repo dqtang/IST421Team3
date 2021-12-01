@@ -36,7 +36,7 @@
         <div id="wrapper">
             <div id="menu">
                 <p class="welcome" id ="welcome">Welcome, </p>
-                <p class="logout"><a id="exit" onclick="homePage()">Exit Chat</a></p>
+                <p class="logout"><a id="exit" onclick="closeWindow()">Exit Chat</a></p>
             </div>
 
             <p id = "friendname">NAME</p>
@@ -65,8 +65,8 @@
         </div>
 
 <script>
-    function homePage(){
-        location.href = "http://localhost/Homepage.html?id_token="+id_token;
+    function closeWindow(){
+        window.close();
     }    
 
 
