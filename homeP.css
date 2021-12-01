@@ -95,7 +95,7 @@ display: inline-block;
 
 .profilePic {
     float: left;
-    width: calc(33.333% - 1rem);
+    
     display: flex;
     justify-content: center;
     align-items: center;
