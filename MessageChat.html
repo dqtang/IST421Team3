@@ -14,11 +14,6 @@
 
             const fName = params.get('fName');
 
-            console.log(id_token);
-            console.log(friendID);
-            console.log(fName);
-
-
 			function decodeJwtResponse(id_token){
 								var base64Url = id_token.split('.')[1];
 								var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -106,13 +101,13 @@ function chatlog(){
             success: function(data){
                 //alert(data);
                 var messageLogJson = data;
-                    //console.log(messageLogJson);
+                    
 
                 var parseMessageLogJson= JSON.parse(messageLogJson);
-                    //console.log(parseMessageLogJson);
+                    
 
                 var organized = parseMessageLogJson.sort(function (a, b) { return a.TimeStamp.localeCompare(b.TimeStamp); });
-                    console.log(organized);
+                    
 
                     $(document).ready(function() { 
 
