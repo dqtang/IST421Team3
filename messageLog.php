@@ -28,9 +28,7 @@
 
                     $emparray[] = $row;
 
-                }                   
-                //echo json_encode($emparray);
-
+                }
 
             }
 
@@ -40,12 +38,31 @@
 
                     $recarray[] = $row2;
                     
-
                 }
+           
+            }
+            
+            //Checks if arrays are empty
+            if(empty($recarray)){
+                if(empty($emparray)){
+
+                }else{
+                    echo json_encode($emparray);
+                }
+            }elseif(empty($emparray)){
                 
+                if(empty($recarray)){
+
+                }else{
+                    echo json_encode($recarray);
+                }
+            }elseif(empty($emparray) and empty($recarray))
+                {
+                    
+                }
+            else{
                 echo json_encode($recarray+$emparray);
             }
-
         }
 
 
