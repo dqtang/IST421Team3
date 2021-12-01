@@ -56,27 +56,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </div>
 
-
-<script>
-		//Redirect Functions to include id_tokens
-	function uploadPage() {
-		location.href = "http://localhost/upload.html?id_token="+id_token;
-	}
-
-	function homePage(){
-		location.href = "http://localhost/Homepage.html?id_token="+id_token;
-	}
-</script>
-
 		
 </header>
 
 	
-<div class="profilePic"> <a> <img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic"/> </a>
-
-
-
+<div class="profilePic"> <a onclick="profilePage()"> <img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic"/> </a>
 </div>
+
+
+<script>
+	//Redirect Functions to include id_tokens
+function uploadPage() {
+	location.href = "http://localhost/upload.html?id_token="+id_token;
+}
+
+function homePage(){
+	location.href = "http://localhost/Homepage.html?id_token="+id_token;
+}
+
+function profilePage(){
+	location.href = "http://localhost/Profile.html?id_token="+id_token;
+}
+</script>
 
 
 <script>
@@ -182,14 +183,18 @@
 			listImg.appendChild(img);
 		};listDiv.appendChild(ul);
 		
-
+		/*
+		Function that allows user to click on friends 
+		in friend list and allows them to send messages to them
+		on another window
+		*/
 		$(document).ready(function() { 
 
    			$("#list li").click(function() {
 				var fID= $(this).attr('friendid');
 				var fName = $(this).attr('friendName');
 
-			  	location.href = "http://localhost/MessageChat.html?friend_id=" + fID +"&id_token=" + id_token + "&fName=" + fName;
+			  	window.open("http://localhost/MessageChat.html?friend_id=" + fID +"&id_token=" + id_token + "&fName=" + fName);
 			
 			});
 		});
