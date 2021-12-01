@@ -10,7 +10,7 @@
       if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
       }else{
-            $sql = "SELECT post.Picture, post.Profile_ID, Names.First_Name, Names.Last_Name, Names.Profile_URL FROM post_information as post 
+            $sql = "SELECT post.Post_ID, post.Picture, post.Likes, post.Profile_ID, Names.First_Name, Names.Last_Name, Names.Profile_URL FROM post_information as post 
                         INNER JOIN profile_information as Names ON post.Profile_ID = Names.Profile_ID 
                               Order BY TimeStamp DESC";
 

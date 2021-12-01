@@ -12,12 +12,21 @@
   list-style: inside;
   
 }
+
 	.activityImage{
 		display: block;
   margin-left: auto;
   margin-right: auto;
 
 	}
+	.lik2{
+		font-size: 15px;
+	}
+	.likeBTN{
+		max-height: 25px;
+		max-width: 25px;
+	}
+
 	</style>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -77,6 +86,7 @@ function homePage(){
 function profilePage(){
 	location.href = "http://localhost/Profile.html?id_token="+id_token;
 }
+
 </script>
 
 
@@ -101,6 +111,8 @@ function profilePage(){
 
 <script>
 
+
+
 	$.ajax({
 		url:"http://localhost/AllPost.php",
 		type:'GET',
@@ -119,6 +131,10 @@ function profilePage(){
 			for( var i=0; i<parse_postActivity.length; ++i){
 				const img = document.createElement('img');
 				var li=document.createElement('li');
+				
+				var lik2=document.createElement('lik2')
+				var btn = document.createElement('input');
+
 
 				img.src= "http://localhost/image/" + parse_postActivity[i].Picture;
 
@@ -126,17 +142,26 @@ function profilePage(){
 				img.setAttribute('height', '200px');
 				img.setAttribute('class','activityImage');
 
+				btn.setAttribute('id', parse_postActivity[i].Post_ID);
+				btn.setAttribute('type','image');
+				btn.setAttribute('src','http://localhost/like.jpg');
+				btn.setAttribute('class','likeBTN');
+
+
 				li.setAttribute("style", "list-style-type:none");
 
-				li.innerHTML = parse_postActivity[i].First_Name + " " +parse_postActivity[i].Last_Name;
+				lik2.setAttribute("class", "lik2");
 
-				listImg = ul.appendChild(li) + ul.appendChild(img);
+				li.innerHTML = parse_postActivity[i].First_Name + " " +parse_postActivity[i].Last_Name;
+				lik2.innerHTML = "Likes: "+parse_postActivity[i].Likes + "&nbsp"+ "&nbsp";
+
+				listImg = ul.appendChild(li) + ul.appendChild(img) + ul.appendChild(lik2) + ul.appendChild(btn);
 			};listDiv.appendChild(ul);
 			
 
 
 		}
-	})
+	});
 
 
 </script>
@@ -162,7 +187,6 @@ function profilePage(){
 		for( var i=0; i<parse_json.length; ++i){
 			const img = document.createElement('img');
 			var li=document.createElement('li');
-
 
 			img.src= parse_json[i].Profile_URL;
 			li.innerHTML = parse_json[i].First_Name + " " +parse_json[i].Last_Name + "&nbsp" + "&nbsp" + "&nbsp";
@@ -197,8 +221,23 @@ function profilePage(){
 			  	window.open("http://localhost/MessageChat.html?friend_id=" + fID +"&id_token=" + id_token + "&fName=" + fName);
 			
 			});
-		});
 
+			$("#RecentPostLists input").click(function() {
+				var postID = $(this).attr('id');
+
+				$.ajax({
+				url:"http://localhost/like.php",
+				type:'GET',
+				data: {'postID': postID},success: function(likeMSG){
+					
+					}
+				});
+
+			});
+
+			
+		});
+		
 	};
 
 </script>
