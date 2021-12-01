@@ -42,7 +42,7 @@
 <body>
         <div id="wrapper">
             <div id="menu">
-                <p class="welcome">Welcome, <b></b></p>
+                <p class="welcome" id ="welcome">Welcome, </p>
                 <p class="logout"><a id="exit" onclick="homePage()">Exit Chat</a></p>
             </div>
 
@@ -50,6 +50,7 @@
 
             <script>
                 document.getElementById("friendname").innerHTML = fName;
+                document.getElementById("welcome").innerHTML = "Welcome, " + firstName + " " + lastName;
             </script>
 
             <div id="chatbox">
@@ -87,8 +88,15 @@
 
 <script>
 
-    window.onload = chatlog;
+    //start chatlog() function when page loads
+    window.onload = chatlog();
+    //calls chatlog ever 2.5secs
+    setInterval(chatlog,2500);
 function chatlog(){
+
+    //Sets old scroll height
+    var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20;
+
 
     $.ajax({
         url:"http://localhost/messageLog.php",
@@ -133,9 +141,15 @@ function chatlog(){
                             listImg = ul.appendChild(li);
                         };listDiv.appendChild(ul);
 
+                        //Autoscroll after comparing old to new scroll height
+                        var newScrollHeight = $("#chatbox")[0].scrollHeight-20;
+                        if(newScrollHeight>oldScrollHeight){
+                            $("#chatbox").animate({scrollTop:newScrollHeight}, 'normal');
+                        }
+
                         });
             }
-    }).done(chatlog);
+    });
 }
 
 
