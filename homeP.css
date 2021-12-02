@@ -67,6 +67,11 @@ li {
 	list-style: inside;
 	
   }
+  li2 {
+	text-align: center;
+	list-style: inside;
+	
+  }
   body{
 	  background-color: #D6C7F5;
   }
@@ -114,6 +119,13 @@ padding-left:0px;
 float: left;
 display: inline-block;
 }
+.li2{
+	list-style-type: none;
+margin-left:0px;
+padding-left:0px;
+float: left;
+display: inline-block;
+}
 
 .profilePic {
     float:left;
@@ -124,6 +136,16 @@ display: inline-block;
     align-items: center;
     margin-right: 55px;
 }
+.profilePic2 {
+    float:left;
+    width: 60px;
+	height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 55px;
+}
+
 
 .profilePic img {
     border-radius: 70%;
@@ -176,3 +198,19 @@ margin-left: 120px;
 	background-color: #D6C7F5;
 	
 }
+section .profile-stats{
+	text-align:right right;
+	color: black;
+}
+
+#profileNumbers{
+	float:right;
+	width: 69%;
+	background-color: rgba(181,181,181,1.00);
+}
+
+#profilePic{
+	float: left
+	
+}
+

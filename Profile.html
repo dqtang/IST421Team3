@@ -23,27 +23,22 @@
 
 		
 </header>
-<style>
-	
-	 section .profile-stats{
-		text-align:right right;
-		color: black;
-	}
-	
-	#profileNumbers{
-		float:right;
-		width: 69%;
-		background-color: rgba(181,181,181,1.00);
-	}
-	
-	#profilePic{
-		float: left
-		
-	}
 
+<script>
+	//Redirect Functions to include id_tokens
+function uploadPage() {
+	location.href = "http://localhost/upload.html?id_token="+id_token;
+}
 
-	
-</style>
+function homePage(){
+	location.href = "http://localhost/Homepage.html?id_token="+id_token;
+}
+
+function profilePage(){
+	location.href = "http://localhost/Profile.html?id_token="+id_token;
+}
+
+</script>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
@@ -73,75 +68,57 @@
 
 	<header>
 		<h3 id ="Name">User</h3>
-		<hr>
-	</header>
+		<h3>
+			<div class="profile">
+
+				<img class= "profilePic2" alt="image" src="tech.PNG" name = "profilePic2" id = "profilePic2" />
 	
-	
-		<section>
-		<div>
-		<img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic" width="100" height="100"/>
-			</div>
 			<script>
 				//Change Profile Pic
+				$(".profilePic2").attr("src", profileImageUrl);
 				$(".profilePic").attr("src", profileImageUrl);
 
+	
 				document.getElementById("Name").innerHTML = firstName + " " + lastName;
 			</script>
-
-	</section>
+				<div class="profile-user-settings">
+					<div class="profile-stats">
+						<li><span class="profile-stat-counter" id="pCounter">0</span> Posts Total</li>
+						<li><span class="like-stat-count" id="likeCount">0</span> Likes Total</li>
+					</ul>
+	
+				</div>
+					
+				</div>
+				<script>
+	 
+						$.ajax({
+						url:"http://localhost/php/ProfileLikes.php",
+						type:"POST",
+						data:{'userID':gID},
+						success:function(LikeCounter){
+							document.getElementById("likeCount").innerHTML = LikeCounter;
+						}
+					});
+					
+	
+	
+				</script>
+	
+			</div>
+			<!-- End of profile section -->
+		</h3>
+	<hr>
+	
+	</header>
+	
 	</hr>
 
 </body>
 </html>
 <header>
 <div>
-	<div class="profile">
 
-
-			<div class="profile-user-settings">
-
-				<h1 class="may2958">&nbsp;</h1>
-
-
-				
-
-			</div>
-
-			<div class="profile-stats">
-
-	
-					<li><span class="profile-stat-counter" id="pCounter">0</span> Posts</li>
-					<li><span class="like-stat-count" id="likeCount">0</span> Likes</li>
-				</ul>
-
-			</div>
-
-			<div class="profile-bio">
-
-				<p class="profile-real-name" id="Name2">User</span></p>
-
-			</div>
-			<script> document.getElementById("Name2").innerHTML = firstName + " " + lastName;
-			</script>
-
-
-			<script>
- 
-					$.ajax({
-					url:"http://localhost/php/ProfileLikes.php",
-					type:"POST",
-					data:{'userID':gID},
-					success:function(LikeCounter){
-						document.getElementById("likeCount").innerHTML = LikeCounter;
-					}
-				});
-				
-
-
-			</script>
-
-		</div>
-		<!-- End of profile section -->
 
 	</div>
 	<!-- End of container -->
@@ -194,7 +171,7 @@
 						const img = document.createElement('img');
 						var li=document.createElement('li');
 
-						var li2 = document.createElement('li2')
+						var li2 = document.createElement('li')
 		
 						img.src= "http://localhost/image/" + parse_userActivity[i].Picture;
 		
