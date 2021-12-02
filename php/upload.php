@@ -31,7 +31,7 @@
         if (move_uploaded_file($tempname, $folder))  {
             $msg = "Image uploaded successfully";
 
-            header("Location: http://localhost/upload.html?id_token=".$id_token);
+            header("Location: http://localhost/HomePage.html?id_token=".$id_token);
 
         }else{
             $msg = "Failed to upload image";
