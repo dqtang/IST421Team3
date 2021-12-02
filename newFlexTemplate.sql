@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 09:47 PM
+-- Generation Time: Dec 02, 2021 at 09:28 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `flexmedia`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `credential`
---
-
-CREATE TABLE `credential` (
-  `Credential_ID` int(11) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `UserID` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -168,7 +155,10 @@ INSERT INTO `messaging` (`SenderID`, `ReceiverID`, `Messages`, `TimeStamp`) VALU
 ('113862044103668208907', '333', 'fa', '2021-12-01 07:40:57'),
 ('113862044103668208907', '333', 'async request', '2021-12-01 07:41:45'),
 ('113862044103668208907', '222', 'Hi', '2021-12-01 20:22:59'),
-('222', '113862044103668208907', 'A', '2021-12-01 20:23:19');
+('222', '113862044103668208907', 'A', '2021-12-01 20:23:19'),
+('113862044103668208907', '222', 'amazing', '2021-12-02 06:37:27'),
+('113862044103668208907', '222', 'Hello', '2021-12-02 20:13:09'),
+('222', '113862044103668208907', 'Hi!', '2021-12-02 20:13:40');
 
 -- --------------------------------------------------------
 
@@ -189,7 +179,13 @@ CREATE TABLE `post_information` (
 --
 
 INSERT INTO `post_information` (`Picture`, `Post_ID`, `Profile_ID`, `TimeStamp`, `Likes`) VALUES
-(0x436170747572652e4a5047, 18, '113862044103668208907', '2021-12-01 20:19:14', 0);
+(0x436170747572652e4a5047, 18, '113862044103668208907', '2021-12-01 20:19:14', 2),
+(0x436170747572652e4a5047, 19, '113862044103668208907', '2021-12-02 00:08:25', 5),
+(0x436170747572652e4a5047, 20, '113862044103668208907', '2021-12-02 06:37:37', 1),
+(0x737320416d617a6f6e2e4a5047, 23, '113862044103668208907', '2021-12-02 20:12:24', 2),
+(0x646570656e64656e63652e4a5047, 24, '222', '2021-12-02 20:16:10', 12),
+(0x686f6d652e4a5047, 25, '113862044103668208907', '2021-12-02 20:17:05', 2),
+(0x6d657373616765732e4a5047, 26, '113862044103668208907', '2021-12-02 20:17:43', 1);
 
 -- --------------------------------------------------------
 
@@ -215,20 +211,13 @@ INSERT INTO `profile_information` (`First_Name`, `Last_Name`, `Phone_Number`, `D
 ('Test', '1', '', '0000-00-00', '1', '', ''),
 ('Dennis', 'Tang', '6462672420', '1997-01-22', '113862044103668208907', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', 'dqt5211@gmail.com'),
 ('Test2', '2', '', '0000-00-00', '2', '', ''),
-('Test', 'Friend', '', '0000-00-00', '222', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', ''),
-('Another', 'Friend', '', '0000-00-00', '333', 'https://lh3.googleusercontent.com/a/AATXAJyitlq8-zV0bSzZfRsYkeUQYA-HzT5PnolCobZ8=s96-c', ''),
-('NEw', 'Friend', '', '0000-00-00', '555', '', '');
+('Test', 'Friend', '', '0000-00-00', '222', 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60', ''),
+('Another', 'Friend', '', '0000-00-00', '333', 'https://media.istockphoto.com/photos/kitten-at-home-garden-wall-picture-id1273661469', ''),
+('NEw', 'Friend', '', '0000-00-00', '555', 'https://media.istockphoto.com/photos/cat-with-blue-eyes-looks-at-camera-picture-id1067347086', '');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `credential`
---
-ALTER TABLE `credential`
-  ADD PRIMARY KEY (`Credential_ID`),
-  ADD UNIQUE KEY `Cred>Profile` (`UserID`);
 
 --
 -- Indexes for table `friends_list`
@@ -254,12 +243,6 @@ ALTER TABLE `profile_information`
 --
 
 --
--- AUTO_INCREMENT for table `credential`
---
-ALTER TABLE `credential`
-  MODIFY `Credential_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `friends_list`
 --
 ALTER TABLE `friends_list`
@@ -269,7 +252,7 @@ ALTER TABLE `friends_list`
 -- AUTO_INCREMENT for table `post_information`
 --
 ALTER TABLE `post_information`
-  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
