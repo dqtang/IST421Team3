@@ -12,7 +12,9 @@
   list-style: inside;
   
 }
-
+body{
+	background-color: #D6C7F5;
+}
 	.activityImage{
 		display: block;
   margin-left: auto;
@@ -97,13 +99,7 @@ function profilePage(){
 
 
 <div class = "container2" id="RecentPosts">
-	<div class="container3" id="ID"> <figcaption>Friends</figcaption> 
-		<p>________________________________</p>
-		
-		<list id ="list">
-		
-		</list>
-		</div>
+
 <a>
 	<list id="RecentPostLists" class="postList" >
 		</list></a>
@@ -114,7 +110,7 @@ function profilePage(){
 
 
 	$.ajax({
-		url:"http://localhost/AllPost.php",
+		url:"http://localhost/php/AllPost.php",
 		type:'GET',
 		data: {'a':'a'},
 		success: function(data){
@@ -165,13 +161,19 @@ function profilePage(){
 
 
 </script>
-
+<div class="container3" id="ID"> <figcaption>Friends</figcaption> 
+	<p>________________________________</p>
+	
+	<list id ="list">
+	
+	</list>
+	</div>
 
 
 <script>
 	const xhttp = new XMLHttpRequest();
 
-	xhttp.open("POST", "http://localhost/Friendlist.php", true);
+	xhttp.open("POST", "http://localhost/php/Friendlist.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("gID="+gID);
 	xhttp.onload = function(){
@@ -226,7 +228,7 @@ function profilePage(){
 				var postID = $(this).attr('id');
 
 				$.ajax({
-				url:"http://localhost/like.php",
+				url:"http://localhost/php/like.php",
 				type:'GET',
 				data: {'postID': postID},success: function(likeMSG){
 					

@@ -87,7 +87,7 @@
     function SendMessage(){
         var Messages = document.getElementById('Messages').value;
         $.ajax({
-            url:"http://localhost/SendMessage.php",
+            url:"http://localhost/php/SendMessage.php",
             type:'POST', async:true,
             data: {'SenderID':SenderID,
                     'ReceiverID':friendID,
@@ -119,7 +119,7 @@
 
 
     $.ajax({
-        url:"http://localhost/messageLog.php",
+        url:"http://localhost/php/messageLog.php",
 		type:'POST', async:true,
 		data: {'SenderID':SenderID,
                 'ReceiverID':friendID},

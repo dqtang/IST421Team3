@@ -98,12 +98,13 @@
 					//Redirect Users to Homepage or newUserPage as needed.
 					$.ajax({
 						type: 'POST', 
-						url: 'http://localhost/gVerify.php',
+						url: 'http://localhost/php/gVerify.php',
 						data: {'id_token' : response.credential},
 						success: function(data){
 						
+							alert(data);
 							if(data && data.match())
-						
+							
 								location.href = data+"?id_token="+response.credential;
 						}
 					})
