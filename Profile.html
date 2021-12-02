@@ -182,7 +182,7 @@ function profilePage(){
 						li.setAttribute("style", "list-style-type:none");
 		
 						li.innerHTML = parse_userActivity[i].First_Name + " " +parse_userActivity[i].Last_Name;
-						li2.innerHTML = "Posted On: " + parse_userActivity[i].TimeStamp +"<br>"+"<br>";
+						li2.innerHTML = "Posted On: " + parse_userActivity[i].TimeStamp +"<br > Likes: "+parse_userActivity[i].Likes+"<br>"+"<br>";
 						listImg = ul.appendChild(li) + ul.appendChild(img) + ul.appendChild(li2);
 					};listDiv.appendChild(ul);
 					
