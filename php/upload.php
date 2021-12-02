@@ -1,10 +1,5 @@
 
 <?php
-error_reporting(0);
-?>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<?php
 
 
   include 'DBConnect.php';
@@ -22,7 +17,7 @@ error_reporting(0);
   
     $filename = $_FILES["uploadfile"]["name"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];    
-        $folder = "image/".$filename;
+        $folder = "../image/".$filename;
           
         $conn = new mysqli($servername, $username, $password, $dbname);
   
