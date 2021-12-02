@@ -61,12 +61,7 @@ border-radius: 37px;
 
 
 
-.container3 figcaption{
-margin-left: 40%;
-max-width:180px;
-border-radius: 00px;
-font-size: 30px
-}
+
 li {
 	text-align: center;
 	list-style: inside;
@@ -101,6 +96,13 @@ li {
 	border-style: solid;
 	}
 
+	.container3 figcaption{
+		margin-left: 40%;
+		max-width:180px;
+		border-radius: 00px;
+		font-size: 30px
+		}
+
 .space{
 	margin-top: 50px;
 }
@@ -114,14 +116,63 @@ display: inline-block;
 }
 
 .profilePic {
-    float: left;
-    width: calc(33.333% - 1rem);
+    float:left;
+    width: 50px;
+	height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 3rem;
+    margin-right: 55px;
 }
 
 .profilePic img {
-    border-radius: 50%;
+    border-radius: 70%;
+}
+
+@charset "UTF-8";
+/* CSS Document */
+
+.Con1{
+background-color: #8AB998;
+max-width: 100%;
+height: 50px;
+}
+
+
+.Con1 a{
+margin-left: 70px;
+font-family: 'Anton', sans-serif;	
+font-size: x-large;
+
+margin-right: 330px;
+margin-left: 120px;
+}
+
+
+.Con2{
+	background-color: #D6C7F5;
+    max-height: 100%; 
+	max-width: 100%;
+}
+
+
+
+.center {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	text-align: center;
+}
+.Con2 input{
+	display: block;
+	margin-right:auto;
+	margin-left: auto;
+	
+}
+
+.con3{
+	padding-top: 900px;
+	background-color: #D6C7F5;
+	
 }

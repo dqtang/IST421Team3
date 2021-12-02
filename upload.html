@@ -1,23 +1,5 @@
 <!DOCTYPE html>
 <html>
-  
-<title>Image Upload</title>
-<link rel="stylesheet" type= "text/css" href ="postpage.css"/>
-<header>
-
-<div class= "Con1"><a  onclick="homePage()" >Flex Media</a>
-    
-    <script>
-    function homePage(){
-        location.href = "http://localhost/Homepage.html?id_token="+id_token;
-    }
-</script>
-<a >New Post</a>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-</div>
-	</header>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     const params = new URLSearchParams(document.location.search);
@@ -33,11 +15,60 @@
                         return JSON.parse(jsonPayload);
                     };
     const responsePayload = decodeJwtResponse(id_token);
+    profileImageUrl = responsePayload.picture;
 
     gID = responsePayload.sub;
 
 
 </script>
+<title>New Post</title>
+<link rel="stylesheet" type= "text/css" href ="homeP.css"/>
+<header>
+
+	<div class= "container1">  
+    <a onclick="profilePage()"class="profilePic"> <img class= "profilePic" alt="image" src="tech.PNG" name = "profilePic" id = "profilePic" /> </a>
+
+    <a  onclick="homePage()">Flex Media</a>
+<input type ="text" placeholder="search" >
+
+
+
+<a><img src="AddaPost.PNG" class ="new_post" width="38" height="31" onclick="uploadPage()"/></a>
+<a ><img src="Home ICon.PNG" width="38" height="31" alt=""onclick="homePage()"/></a>
+<p style="width: 100px">&nbsp; </p>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</div>
+
+		
+</header>
+
+	
+
+
+<script>
+	//Change Profile Pic
+	$(".profilePic").attr("src", profileImageUrl);
+</script>
+
+
+<script>
+	//Redirect Functions to include id_tokens
+function uploadPage() {
+	location.href = "http://localhost/upload.html?id_token="+id_token;
+}
+
+function homePage(){
+	location.href = "http://localhost/Homepage.html?id_token="+id_token;
+}
+
+function profilePage(){
+	location.href = "http://localhost/Profile.html?id_token="+id_token;
+}
+
+</script>
+
 
   <body>
       <!-- Form to upload image to server with gID && id_token-->
