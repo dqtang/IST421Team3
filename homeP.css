@@ -67,11 +67,31 @@ max-width:180px;
 border-radius: 00px;
 font-size: 30px
 }
-
+li {
+	text-align: center;
+	list-style: inside;
+	
+  }
+  body{
+	  background-color: #D6C7F5;
+  }
+	  .activityImage{
+		  display: block;
+	margin-left: auto;
+	margin-right: auto;
+  
+	  }
+	  .lik2{
+		  font-size: 15px;
+	  }
+	  .likeBTN{
+		  max-height: 25px;
+		  max-width: 25px;
+	  }
 
 .container3{
 	align-content:center;
-
+	float:right;
 	margin-left: auto;
 
 	min-height: 100%;
