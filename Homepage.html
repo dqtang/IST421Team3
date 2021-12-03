@@ -108,6 +108,7 @@ function profilePage(){
 			var ul=document.createElement('ul');
 
 			ul.setAttribute("style", "list-style-type:none");
+			ul.setAttribute("class", "fitContent")
 			
 			for( var i=0; i<parse_postActivity.length; ++i){
 				const img = document.createElement('img');
@@ -119,8 +120,8 @@ function profilePage(){
 
 				img.src= "http://localhost/image/" + parse_postActivity[i].Picture;
 
-				img.setAttribute('width', '200px');
-				img.setAttribute('height', '200px');
+				img.setAttribute('width', '300px');
+				img.setAttribute('height', '300px');
 				img.setAttribute('class','activityImage');
 
 				btn.setAttribute('id', parse_postActivity[i].Post_ID);

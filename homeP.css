@@ -126,7 +126,12 @@ padding-left:0px;
 float: left;
 display: inline-block;
 }
-
+.fitContent{
+	width: 1200px;
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+}
 .profilePic {
     float:left;
     width: 50px;
